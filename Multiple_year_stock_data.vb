@@ -24,7 +24,9 @@ For m = 2 To lastrow
 
        
         yearlychange = endofyearvalue - startofyearvalue
-                ticker = Cells(m, 1).Value
+        Cells(summarybox, 11).Value = yearlychange / Cells(2, 3).Value
+        Cells(summarybox, 11).NumberFormat = "0.00%"
+        ticker = Cells(m, 1).Value
         Cells(summarybox, 9).Value = ticker
     Cells(summarybox, 10).Value = yearlychange
     Cells(summarybox, 10).NumberFormat = "$0.00"
@@ -32,7 +34,7 @@ For m = 2 To lastrow
     Cells(summarybox, 10).Interior.ColorIndex = "10"
     Else: Cells(summarybox, 10).Interior.ColorIndex = "3"
     End If
-    Cells(summarybox, 11).Value = yearlychange / Cells(2, 3).Value
+    Cells(summarybox, 11).Value = yearlychange / startofyearvalue
     Cells(summarybox, 11).NumberFormat = "0.00%"
         
     
@@ -43,7 +45,7 @@ For m = 2 To lastrow
         summarybox = summarybox + 1
     End If
     
-    If Cells(m - 1, 1).Value <> Cells(m, 1) Then
+    If Cells(m - 1, 1).Value <> Cells(m, 1) And Cells(m, 3).Value <> 0 Then
         startofyearvalue = Cells(m, 3).Value
        
         
